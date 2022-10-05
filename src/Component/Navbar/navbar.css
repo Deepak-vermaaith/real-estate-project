@@ -1,0 +1,10 @@
+.p-menubar.navbar{
+  background: transparent;
+  border: 1px solid #dee2e640;
+}
+.navbar .p-menubar-root-list > .p-menuitem > .p-menuitem-link  .p-menuitem-text {
+    color: black;
+}
+.navbar .p-menubar-root-list > .p-menuitem > .p-menuitem-link:not(.p-disabled):hover {
+    background: #c7dafe;
+}
