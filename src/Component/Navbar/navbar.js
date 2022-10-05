@@ -1,6 +1,7 @@
 
 import React from 'react';
 import { Menubar } from 'primereact/menubar';
+import { Button } from 'primereact/button';
 import { InputText } from 'primereact/inputtext';
 import './navbar.css'
 const Navbar = () => {
@@ -21,7 +22,11 @@ const Navbar = () => {
     ];
 
     const start = <img alt="logo" src={require("./../../images/logo.png")} height="40" className="mr-2 cursor-pointer"></img>;
-    const end = <InputText placeholder="Search" type="text" />;
+    const end = <>
+        <Button label="Login" className="p-button-outlined mr-3" />
+        <Button label="SignUp" aria-label="SignUp" />
+
+    </>;
 
     return (
         <div className='col-12'>

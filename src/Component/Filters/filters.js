@@ -34,12 +34,26 @@ const Filters = (props) => {
     ];
     const onLocationChange = (e) => {
         setSelectedLocation(e.value);
+        const searchVal = {
+            'location': e.value,
+        }
+        props.updateCardData(searchVal);
     }
     const onPriceChange = (e) => {
         setSelectedPrice(e.value);
+        const searchVal = {
+            'price': e.value,
+        }
+        props.updateCardData(searchVal);
+
     }
     const onHouseChange = (e) => {
+        const searchVal = {
+            'houseType': e.value,
+        }
         setSelectedHouse(e.value);
+        props.updateCardData(searchVal);
+
     }
     const search = () => {
         const date = formatDate(date3)
@@ -65,6 +79,14 @@ const Filters = (props) => {
 
         return [year, month, day].join('-');
     }
+    const onChangeDate3 = (val) => {
+        const searchVal = {
+            'date': val
+        }
+        setDate3(val);
+        props.updateCardData(searchVal);
+
+    }
     return (
         <div className='grid filter-section'>
             <div className='col-10 grid'>
@@ -74,7 +96,7 @@ const Filters = (props) => {
                 </div>
                 <div className='col-3'>
                     <p>When</p>
-                    <Calendar id="icon" value={date3} onChange={(e) => setDate3(e.value)} showIcon />
+                    <Calendar id="icon" value={date3} onChange={(e) => onChangeDate3(e.value)} showIcon />
                 </div>
 
                 <div className='col-3'>
@@ -89,7 +111,7 @@ const Filters = (props) => {
             <div className='col-2 pt-6'>
                 {selectedHouse && selectedLocation && selectedPrice && date3 ?
                     <Button onClick={search} label="Search" aria-label="Search" /> :
-                    <Button label="Disabled" disabled />}
+                    <Button label="Search" disabled />}
             </div>
         </div>
     );

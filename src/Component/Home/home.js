@@ -60,7 +60,7 @@ const data = [
         'price': 100000,
         'popular': true,
         'houseType': 'Home',
-        'location': 'Paris',
+        'location': "Paris",
         'bedroom': 3,
         'bathroom': 2,
         'area': 2200,
@@ -86,27 +86,27 @@ const data = [
 const Home = () => {
     const [cardData, setCardData] = useState([...data]);
     const updateSearch = (val) => {
-        console.log(val, "val....")
         let data = cardData.filter((item) => {
-            console.log(item, "item")
             if (item.date === val.date && item.houseType === val.houseType.name && item.location === val.location.name && item.price === val.price.name) {
                 return item;
             }
         });
         setCardData([...data])
-        console.log(data, "data...")
+    }
+    const updateCardData = (val) => {
+        setCardData([...data])
     }
     return (
         <div className="main-section">
             <Navbar />
             <div className="sub-section">
                 <p className="fnt-size22px text-black font-bold">Search Properties to rent</p>
-                <Filters updateSearch={updateSearch} />
+                <Filters updateCardData={updateCardData} updateSearch={updateSearch} />
                 <div className="grid mt-5 ">
                     {cardData.length > 0 ? cardData.map((item, index) => {
                         return (
                             <div className="col-4 p-0 mb-5" key={index}>
-                                <PropertyCard card={item} />
+                                <PropertyCard  card={item} />
                             </div>
                         )
                     })
